@@ -15,9 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from users import views as users_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog_app.urls')),
+
+    #it can be like blog_app but here we call just register function from users/views app, a new way
+    path('register', users_views.register, name='register'),
 
 ]
