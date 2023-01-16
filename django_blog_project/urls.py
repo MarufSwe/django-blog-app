@@ -16,12 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from users import views as users_views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog_app.urls')),
 
     #it can be like blog_app but here we call just register function from users/views app, a new way
-    path('register', users_views.register, name='register'),
+    path('register', users_views.register, name='register'), #function base view
+    path('profile', users_views.profile, name='profile'),  # function base view
+
+    path('login', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'), #class base view
+    path('logout', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'), #class base view
 
 ]
