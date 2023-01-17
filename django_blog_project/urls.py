@@ -18,15 +18,20 @@ from django.urls import path, include
 from users import views as users_views
 from django.contrib.auth import views as auth_views
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog_app.urls')),
 
-    #it can be like blog_app but here we call just register function from users/views app, a new way
-    path('register', users_views.register, name='register'), #function base view
+    # it can be like blog_app but here we call just register function from users/views app, a new way
+    path('register', users_views.register, name='register'),  # function base view
     path('profile', users_views.profile, name='profile'),  # function base view
 
-    path('login', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'), #class base view
-    path('logout', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'), #class base view
-
+    path('login', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),  # class base view
+    path('logout', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),  # class base view
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
