@@ -9,7 +9,7 @@ def register(request):
         # form = UserCreationForm(request.POST) #default fields, without email
         form = UserRegisterForm(request.POST) #custome class with email field
         if form.is_valid():
-            # form.save()
+            form.save()
             username = form.cleaned_data.get('username')
             messages.success(request, f'Your account has been created! You can login now!!')
             return redirect('login')
