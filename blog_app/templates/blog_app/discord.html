@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Discord</title>
+</head>
+<body>
+<div style="padding: 20px">
+    <h1>Voice to text for Discord</h1>
+
+    <button onclick="location.href='{% url 'discord' %}'"> Execute Script</button>
+    <hr>
+
+    {% if data %}
+        {{ data | safe }}
+    {% endif %}
+
+</div>
+{#<form action="/external/" method="post">#}
+{#    {% csrf_token %}#}
+{#    Input Text:#}
+{#    <label>#}
+{#        <input type="text" name="param" required>#}
+{#    </label> <br><br>#}
+{#    {{ data_external }}<br><br>#}
+{#    {{ data1 }}<br><br>#}
+{#    <input type="submit" value="execute external python scripy">#}
+{##}
+{#</form>#}
+
+
+{#<h1>External Function Is:</h1>#}
+
+{#<form method="post">#}
+{#  {% csrf_token %}#}
+{#  <button type="submit">Click to run Python function</button>#}
+{#</form>#}
+{##}
+{#{% if message %}#}
+{#  <p>{{ message }}</p>#}
+{#{% endif %}#}
+
+{#<form action="{% url 'run_python_function' %}" method="post">#}
+{#  {% csrf_token %}#}
+{#  <button type="submit">Click to run Python function</button>#}
+{#</form>#}
+
+
+</body>
+</html>
